@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis XV Años - Anna Pau</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Pinyon+Script&family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFFFF;--pearl:#F6F6F7;--silver:#C0C0C8;--silver-d:#8E8E98;--black:#0E0E10;--text:#1C1C1E;--muted:#6B6B72;--smooth:cubic-bezier(.25,1,.5,1);
+--shine:linear-gradient(110deg,#8E8E98 0%,#F4F4F7 25%,#B9B9C2 45%,#FFFFFF 60%,#8E8E98 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;font-family:'Montserrat',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;scroll-behavior:smooth}
+.shine{background:var(--shine);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;display:inline-block;padding:.15em .25em}
+@keyframes shimmer{to{background-position:-250% 0}}
+.music{position:fixed;bottom:28px;right:28px;width:50px;height:50px;border-radius:50%;border:1px solid var(--silver);background:var(--black);display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:2000;box-shadow:0 10px 25px rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:all .6s var(--smooth)}
+body.active .music{opacity:1;visibility:visible}
+.music svg{width:18px;height:18px;fill:var(--silver)}
+#env{position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,#2a2a2e,#0a0a0b 75%);z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s,visibility 1.2s;overflow:hidden}
+#env.out{opacity:0;visibility:hidden;pointer-events:none}
+.env-tag{font-family:'Cinzel',serif;font-size:14px;letter-spacing:8px;text-transform:uppercase;color:var(--silver);text-align:center}
+.env-title{font-family:'Pinyon Script',cursive;font-size:76px;line-height:1.3;text-align:center;margin-bottom:35px;max-width:100%;animation:fl 4s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-5px)}}
+.ew{position:relative;cursor:pointer;transition:transform .6s var(--smooth)}
+.ew:hover{transform:translateY(-8px)}
+.envelope{position:relative;width:320px;height:210px;background:linear-gradient(135deg,#f2f2f4,#cfcfd6);box-shadow:0 20px 45px rgba(0,0,0,.6);border-radius:2px}
+.envelope:before,.envelope:after{content:'';position:absolute;top:0;z-index:2;border-top:105px solid transparent;border-bottom:105px solid #dcdce2}
+.envelope:before{right:0;border-right:160px solid #dcdce2}
+.envelope:after{left:0;border-left:160px solid #e8e8ec}
+.flap{position:absolute;top:0;left:0;border-left:160px solid transparent;border-right:160px solid transparent;border-top:115px solid #b8b8c1;transform-origin:top;transition:transform .9s var(--smooth);z-index:4}
+.ew.open .flap{transform:rotateX(180deg);z-index:1}
+.seal{position:absolute;top:90px;left:50%;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#8E8E98);z-index:5;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 15px rgba(255,255,255,.35);transition:all .5s}
+.seal svg{width:22px;height:22px;fill:var(--black)}
+.ew.open .seal{opacity:0;transform:translateX(-50%) scale(.5)}
+.hint{font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--silver);margin-top:40px;animation:pu 2.5s infinite}
+@keyframes pu{50%{opacity:.35}}
+#main{display:none;width:100%;flex-direction:column;align-items:center;opacity:0;animation:fi 2s forwards .3s}
+body.active #main{display:flex}
+@keyframes fi{to{opacity:1}}
+.a{opacity:0;transition:all 1.2s var(--smooth);position:relative;z-index:2}
+.up{transform:translateY(40px)}.zm{transform:scale(.92)}
+.a.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.25s}.d3{transition-delay:.4s}.d4{transition-delay:.55s}
+.sec{width:100%;padding:110px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
+.pearl{background:var(--pearl)}.white{background:var(--white)}
+.silver{background:linear-gradient(160deg,#e9e9ed,#c9c9d0 50%,#ececf0)}
+.black{background:radial-gradient(circle at 50% 0%,#26262a,var(--black) 70%);color:#fff}
+.tag{font-family:'Cinzel',serif;font-size:14px;letter-spacing:5px;text-transform:uppercase;color:var(--silver-d);margin-bottom:25px;font-weight:500}
+.black .tag{color:var(--silver)}
+.script{font-family:'Pinyon Script',cursive;font-size:84px;margin-bottom:20px;line-height:1.3}
+.serif{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.7;color:var(--muted);font-style:italic;max-width:620px;padding:0 10px}
+.black .serif{color:#c9c9d0}
+.vline{width:1px;height:60px;background:var(--silver-d);margin:35px auto}
+.hline{width:60px;height:1px;background:var(--silver-d);margin:40px auto}
+.photo{width:100%;max-width:420px;margin:50px auto 0;box-shadow:0 20px 50px rgba(0,0,0,.15);border:5px solid #fff;overflow:hidden}
+.black .photo{border-color:#2a2a2e}
+.photo img{width:100%;display:block;transition:transform .6s}
+.photo:hover img{transform:scale(1.03)}
+.ititle{font-family:'Cinzel',serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--silver-d);margin-bottom:12px;font-weight:500}
+.black .ititle{color:var(--silver)}
+.idata{font-family:'Cormorant Garamond',serif;font-size:32px;margin-bottom:5px;line-height:1.3}
+.btn{display:inline-block;background:var(--black);color:#fff;padding:17px 35px;font:500 12px 'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:1px solid var(--silver-d);cursor:pointer;border-radius:2px;transition:all .4s;margin-top:30px;position:relative;z-index:5}
+.btn:hover{background:var(--silver);color:var(--black);transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,255,255,.4)}
+.black .btn{background:transparent}
+.cd{display:flex;gap:14px;margin:35px 0 10px;justify-content:center;flex-wrap:wrap}
+.cd div{width:76px;padding:16px 0;background:var(--black);border:1px solid var(--silver-d);border-radius:2px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.cd b{display:block;font:500 30px 'Cinzel',serif;background:var(--shine);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
+.cd span{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)}
+.cal{width:100%;max-width:340px;margin:40px auto 0;padding:35px 25px;background:#fff;box-shadow:0 15px 45px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.05)}
+.cal h4{font:500 20px 'Cinzel',serif;text-transform:uppercase;letter-spacing:4px;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.ch{font-size:12px;font-weight:500;color:var(--silver-d);padding-bottom:10px}
+.cdy{font:400 20px 'Cormorant Garamond',serif;color:var(--muted);display:flex;justify-content:center;align-items:center;aspect-ratio:1}
+.cdy.on{background:var(--black);color:#fff;border-radius:50%;box-shadow:0 0 14px rgba(120,120,135,.7)}
+.map{width:100%;max-width:550px;height:320px;margin:30px auto 0;box-shadow:0 15px 40px rgba(0,0,0,.12);position:relative;z-index:2}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(100%) contrast(1.05)}
+#tl{max-width:420px;width:100%;margin:35px auto 0;position:relative;z-index:2;text-align:left}
+.ev{display:flex;align-items:center;gap:20px;padding-bottom:26px;position:relative}
+.ev:not(:last-child):after{content:'';position:absolute;left:27px;top:56px;bottom:2px;width:1px;background:var(--silver)}
+.ev i{flex:none;width:56px;height:56px;border-radius:50%;background:var(--black);border:1px solid var(--silver-d);display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.ev svg{width:24px;height:24px;fill:none;stroke:#E6E6EC;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ev b{font:600 18px 'Cinzel',serif;display:block;color:var(--black)}
+.ev span{font:400 22px 'Cormorant Garamond',serif;color:var(--muted)}
+.fg{width:100%;max-width:400px;margin:0 auto 20px;position:relative;z-index:2}
+.inp{width:100%;padding:18px 0;background:transparent;border:0;border-bottom:1px solid rgba(0,0,0,.2);font:400 15px 'Montserrat',sans-serif;color:var(--text);outline:0;text-align:center;transition:border-color .4s}
+.inp:focus{border-bottom-color:var(--black)}
+textarea.inp{resize:vertical;min-height:90px}
+select.inp{appearance:none;text-align-last:center;cursor:pointer}
+.box{background:rgba(255,255,255,.75);padding:25px 20px;border:1px solid rgba(0,0,0,.12);max-width:420px;position:relative;z-index:2;margin-bottom:40px}
+.ticket{width:100%;max-width:380px;margin:30px auto;background:var(--black);color:#fff;padding:45px 25px;border:1px solid var(--silver-d);box-shadow:0 15px 40px rgba(0,0,0,.25);position:relative;z-index:2}
+.ticket .n{font:italic 500 28px 'Cormorant Garamond',serif;color:var(--silver);margin-bottom:15px}
+.ticket .c{font:500 60px 'Cinzel',serif;line-height:1}
+
+.hero{min-height:100vh;padding:70px 20px;background:radial-gradient(ellipse at 50% 25%,#3a3a40 0%,#161618 45%,#050506 100%);color:#fff;justify-content:center}
+.hero:before{content:'';position:absolute;inset:16px;border:1px solid rgba(192,192,200,.45);pointer-events:none;z-index:1}
+.hero:after{content:'';position:absolute;inset:24px;border:1px solid rgba(192,192,200,.18);pointer-events:none;z-index:1}
+.hero-tag{display:flex;align-items:center;gap:18px;font:500 13px 'Cinzel',serif;letter-spacing:8px;text-transform:uppercase;color:var(--silver);margin-bottom:10px}
+.hero-tag:before,.hero-tag:after{content:'';width:40px;height:1px;background:var(--silver-d)}
+.hero-name{font-family:'Pinyon Script',cursive;font-size:clamp(78px,24vw,150px);line-height:1.25;filter:drop-shadow(0 0 22px rgba(220,220,235,.35))}
+.hero-date{font:500 15px 'Cinzel',serif;letter-spacing:10px;color:#fff;margin:6px 0 40px;padding-left:10px}
+.arch{width:100%;max-width:300px;aspect-ratio:3/4;border-radius:150px 150px 4px 4px;overflow:hidden;border:2px solid var(--silver);box-shadow:0 0 0 8px rgba(255,255,255,.06),0 0 60px rgba(200,200,215,.28),0 30px 60px rgba(0,0,0,.6);position:relative;z-index:2;background:linear-gradient(160deg,#2c2c31,#0c0c0e)}
+.arch img{width:100%;height:100%;object-fit:cover;display:block}
+.scroll{margin-top:40px;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--silver);position:relative;z-index:2}
+.scroll:after{content:'';display:block;width:1px;height:40px;background:linear-gradient(var(--silver),transparent);margin:12px auto 0;animation:pu 2.5s infinite}
+@media(max-width:400px){.env-title{font-size:60px}.script{font-size:64px}.sec{padding:80px 15px}.idata{font-size:28px}.map{height:260px}.envelope{width:300px;height:195px}.envelope:before,.envelope:after{border-top-width:97px;border-bottom-width:97px}.envelope:before{border-right-width:150px}.envelope:after{border-left-width:150px}.flap{border-left-width:150px;border-right-width:150px;border-top-width:105px}.cd div{width:66px}}
+</style>
+</head>
+<body>
+<audio id="bgm" src="assets/song.mp3" loop></audio>
+<button class="music" onclick="toggleMusic()" aria-label="Música">
+<svg id="ip" style="display:none" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+<svg id="ia" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+
+<div id="env">
+<div class="env-tag">Mis XV Años</div>
+<h1 class="env-title shine">Anna Pau</h1>
+<div class="ew" onclick="openEnv()">
+<div class="flap"></div>
+<div class="seal"><svg viewBox="0 0 24 24"><path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 17L5.5 21L7.5 13.5L2 9H9L12 2Z"/></svg></div>
+<div class="envelope"></div>
+</div>
+<div class="hint">Tocar para abrir</div>
+</div>
+
+<main id="main">
+
+<section class="sec hero">
+<div class="a up d1 hero-tag">Mis XV Años</div>
+<h1 class="a zm d2 hero-name shine">Anna Pau</h1>
+<div class="a up d3 hero-date">27 · 11 · 2026</div>
+<div class="a zm d4 arch"><img src="assets/foto1.jpg" alt="Anna Pau" onerror="this.parentNode.style.display='none'"></div>
+<div class="a up d4 scroll">Desliza</div>
+</section>
+
+<section class="sec white">
+<div class="a up d1 tag">Bienvenidos</div>
+<p class="a up d2 serif"><b style="font-weight:500;color:var(--text)">¡Bienvenidos a mis XV años!</b><br><br>
+Hoy comienza uno de los capítulos más hermosos de mi vida… Un sueño que florece, una ilusión que se hace realidad y una noche que quedará guardada para siempre en mi corazón.<br><br>
+Con mucha ilusión, quiero compartir contigo la magia de este día tan especial, porque los momentos más bonitos de la vida se vuelven aún más inolvidables cuando los compartimos con las personas que queremos.<br><br>
+Gracias por ser parte de mi historia y acompañarme a celebrar mis XV.<br><br>
+Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que nos harán sonreír por siempre.<br><br>
+<b style="font-weight:500;color:var(--text)">¡La magia comienza aquí… y me encantaría vivirla contigo!</b></p>
+</section>
+
+<section class="sec silver">
+<div class="a up d1 ititle" style="color:var(--black)">Será un honor contar con tu presencia el</div>
+<div class="a up d2 idata" style="font-size:40px;font-weight:500">27 de Noviembre</div>
+<div class="a up d3 idata shine" style="font-size:26px;letter-spacing:3px;font-family:'Cinzel',serif">2026</div>
+<div class="a up d3 ititle" style="margin-top:35px;color:var(--black)">Faltan</div>
+<div class="a zm d4 cd">
+<div><b id="cd-d">00</b><span>Días</span></div><div><b id="cd-h">00</b><span>Horas</span></div><div><b id="cd-m">00</b><span>Min</span></div><div><b id="cd-s">00</b><span>Seg</span></div>
+</div>
+<div class="a zm d4 cal"><h4>Noviembre</h4><div class="grid" id="cal"></div></div>
+<a class="a up d4 btn" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Anna+Pau&dates=20261128T010000Z/20261128T080000Z&location=Hacienda+Tejalpa&details=%C2%A1La+magia+comienza+aqu%C3%AD!">Agendar Evento</a>
+<div class="a up d4 photo"><img src="assets/foto2.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
+</section>
+
+<section class="sec white">
+<div class="a up d1 ititle">Con el amor de mis padres</div>
+<div class="a up d2 idata">Adriana Tello</div>
+<div class="a up d3" style="font:20px 'Cinzel',serif;color:var(--silver-d);margin:12px 0">&</div>
+<div class="a up d3 idata">Roberto López</div>
+<div class="a zm d4 hline"></div>
+<div class="a up d4 ititle">Y mis Padrinos</div>
+<div class="a up d4 idata" style="font-size:28px">Susana Díaz y Eduardo Mafra</div>
+<div class="a up d4 photo"><img src="assets/foto3.jpg" alt="Familia" onerror="this.parentNode.style.display='none'"></div>
+</section>
+
+<section class="sec pearl">
+<div class="a up d1 ititle">Ceremonia Religiosa</div>
+<div class="a up d2 idata">Capilla Hacienda Tejalpa</div>
+<div class="a up d3 tag" style="margin:15px 0 0">7:00 p.m.</div>
+<div class="a zm d4 map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.7030639984673!2d-99.7661735!3d19.2517686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd865640467143%3A0xbe4030fae78b4268!2sHACIENDA%20TEJALPAEx%20Hacienda%20Tejalpa!5e0!3m2!1ses-419!2smx!4v1792716286446!5m2!1ses-419!2smx" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<a class="a up d4 btn" target="_blank" href="https://maps.app.goo.gl/xNKHKytZ9gVjbjBT9?g_st=ic">Ver Ubicación</a>
+<div class="a zm hline" style="margin:60px auto"></div>
+<div class="a up d1 ititle">Recepción</div>
+<div class="a up d2 idata">Hacienda Tejalpa · Salón “La Era”</div>
+<div class="a up d3 tag" style="margin:15px 0 0">8:00 p.m.</div>
+<div class="a zm d4 map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.7030639984673!2d-99.7661735!3d19.2517686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd865640467143%3A0xbe4030fae78b4268!2sHACIENDA%20TEJALPAEx%20Hacienda%20Tejalpa!5e0!3m2!1ses-419!2smx!4v1792716324363!5m2!1ses-419!2smx" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<a class="a up d4 btn" target="_blank" href="https://maps.app.goo.gl/xNKHKytZ9gVjbjBT9?g_st=ic">Ver Ubicación</a>
+<div class="a up d4 photo"><img src="assets/foto4.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
+</section>
+
+<section class="sec white">
+<div class="a up d1 ititle">Programa</div>
+<div class="a up d2 idata" style="font-size:36px">Itinerario</div>
+<div class="a up d3" id="tl"></div>
+</section>
+
+<section class="sec black">
+<div class="a up d1 ititle">Código de Vestimenta</div>
+<div class="a up d2 idata shine" style="font:500 40px 'Cinzel',serif;margin:25px 0;letter-spacing:5px">BLACK<br>AND WHITE</div>
+<div class="a up d3 vline" style="background:#444;height:40px"></div>
+<p class="a up d4 serif" style="font-size:19px">Formal. Para mantener la elegancia de la noche, te pedimos asistir vistiendo en tonos blanco y negro.</p>
+<div class="a up d4 photo"><img src="assets/foto5.jpg" alt="Dress Code" onerror="this.parentNode.style.display='none'"></div>
+</section>
+
+<section class="sec pearl">
+<div class="a up d1 ititle">Mesa de Regalos</div>
+<svg class="a zm d2" viewBox="0 0 24 24" style="width:45px;height:45px;fill:var(--silver-d);margin:20px 0"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+<div class="a up d3 idata" style="font-size:34px">Lluvia de Sobres</div>
+<p class="a up d4 serif" style="margin-top:20px;font-size:20px">El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional, habrá un buzón en la recepción para tu obsequio.</p>
+</section>
+
+<section class="sec silver">
+<div class="a up d1 ititle" style="color:var(--black)">Música</div>
+<div class="a up d2 idata" style="font-size:34px">Nuestra Playlist</div>
+<p class="a up d3 serif" style="margin:20px auto 40px;font-size:20px">Ayúdame a crear el ambiente perfecto agregando tus canciones favoritas para la pista de baile.</p>
+<div class="a zm d4" style="width:100%;max-width:480px;position:relative;z-index:2">
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2umHmObbw3Vwjx2eZZ4vdB?utm_source=generator&si=855b78eddc574cd7" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+<a class="a up d4 btn" target="_blank" href="https://open.spotify.com/playlist/2umHmObbw3Vwjx2eZZ4vdB?si=582d71b8e3ef4a76&pt=078a25e2da28d9689fcf7515a0cf991d">Agregar Canciones</a>
+</section>
+
+<section class="sec white">
+<div class="a up d1 ititle">Momentos</div>
+<div class="a up d2 idata" style="font-size:34px">Galería en Vivo</div>
+<p class="a up d3 serif" style="margin:25px auto;font-size:20px">Captura la magia de esta noche. Comparte todas las fotos y videos que tomes directamente en nuestro álbum digital.<br><br>
+<span style="font:500 14px 'Montserrat',sans-serif;font-style:normal;color:var(--muted)">Te sugerimos tener instalada la app de <strong>Google Drive</strong> para subir tus archivos fácilmente.</span></p>
+<a class="a up d4 btn" target="_blank" href="https://drive.google.com/drive/folders/1-3BAJ12anPFqcOKy97ZwoZ2p79st-ZCw?usp=sharing">Subir mis Fotos</a>
+<div class="a up d4 photo"><img src="assets/foto6.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
+</section>
+
+<section class="sec pearl">
+<div id="pases" style="display:none;width:100%">
+<div class="a up d1 ititle">Acceso al Evento</div>
+<div class="a zm d2 ticket">
+<div class="tag" style="margin-bottom:20px">Boleto Especial</div>
+<div class="n" id="t-name">Invitado Especial</div>
+<div class="serif" style="font-size:19px;margin:0 auto 15px">Pases Asignados</div>
+<div class="c shine" id="t-count">0</div>
+<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-top:30px">Muestra esta pantalla al llegar</div>
+</div>
+<div class="hline" style="margin:60px auto"></div>
+</div>
+
+<div class="a up d1 ititle">RSVP</div>
+<div class="a up d2 idata" style="font-size:34px">Confirmar Asistencia</div>
+<p class="a up d3 serif" style="margin:15px auto 25px;font-size:20px">Agradeceremos tu confirmación lo antes posible.</p>
+<div class="a up d4 fg"><input type="text" id="rn" class="inp" placeholder="Tu nombre y apellido"></div>
+<div class="a up d4 fg"><select id="rs" class="inp"><option value="" disabled selected>¿Nos acompañarás?</option><option value="yes">Con gusto asistiré</option><option value="no">No me será posible asistir</option></select></div>
+<div class="fg"><select id="rg" class="inp" style="display:none"></select></div>
+<button class="a up d4 btn" onclick="sendRSVP()" style="margin-bottom:70px">Confirmar por WhatsApp</button>
+
+<div class="a zm vline"></div>
+<div class="a up d1 ititle">Mensajes</div>
+<div class="a up d2 idata" style="font-size:34px">Muro de los Deseos</div>
+<div class="a up d3 fg" style="margin-top:30px"><input type="text" id="wn" class="inp" placeholder="De parte de..."></div>
+<div class="a up d4 fg"><textarea id="wm" class="inp" placeholder="Deja un lindo mensaje para Anna Pau..."></textarea></div>
+<button class="a up d4 btn" onclick="sendWish()">Enviar Mensaje</button>
+</section>
+
+</main>
+
+<script>
+const PHONE="525611727430", EVENT=new Date(2026,10,27,19,0,0);
+const $=id=>document.getElementById(id);
+const bgm=$('bgm'),ip=$('ip'),ia=$('ia');let playing=false;
+function setIcon(p){playing=p;ip.style.display=p?'none':'block';ia.style.display=p?'block':'none'}
+function toggleMusic(){if(playing){bgm.pause();setIcon(false)}else{bgm.play().then(()=>setIcon(true)).catch(()=>{})}}
+function openEnv(){
+  document.querySelector('.ew').classList.add('open');
+  setTimeout(()=>{
+    $('env').classList.add('out');document.body.classList.add('active');
+    bgm.play().then(()=>setIcon(true)).catch(()=>setIcon(false));
+  },1000);
+}
+// Animaciones al hacer scroll
+const io=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.a').forEach(e=>io.observe(e));
+// Itinerario con iconos
+const ICON={
+church:'M12 3v18M7 8h10',
+star:'M12 2l3 7h7l-5.5 4.5 2 7.5-6.5-4-6.5 4 2-7.5L2 9h7z',
+food:'M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 2-3 5-3 8h3v10',
+glass:'M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v7M8 21h8',
+heart:'M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z',
+note:'M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',
+mic:'M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v4',
+moon:'M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'};
+[['19:00','Ceremonia','church'],['20:00','Recepción','star'],['20:30','Cena','food'],['21:30','Brindis','glass'],
+ ['21:40','Vals y baile sorpresa','heart'],['22:30','Se abre pista','note'],['00:00','Banda','mic'],['02:00','Termina la fiesta','moon']]
+.forEach(([t,n,k])=>{$('tl').innerHTML+=`<div class="ev"><i><svg viewBox="0 0 24 24"><path d="${ICON[k]}"/></svg></i><div><b>${t}</b><span>${n}</span></div></div>`});
+// Calendario Noviembre 2026 (1 nov = domingo, 27 = viernes)
+(function(){let h='';'DLMMJVS'.split('').forEach(d=>h+=`<div class="ch">${d}</div>`);
+  for(let d=1;d<=30;d++)h+=`<div class="cdy${d===27?' on':''}">${d}</div>`;$('cal').innerHTML=h})();
+// Cuenta regresiva
+function tick(){
+  let t=EVENT-new Date();if(t<0)t=0;
+  const p=n=>String(n).padStart(2,'0');
+  $('cd-d').textContent=p(Math.floor(t/864e5));
+  $('cd-h').textContent=p(Math.floor(t%864e5/36e5));
+  $('cd-m').textContent=p(Math.floor(t%36e5/6e4));
+  $('cd-s').textContent=p(Math.floor(t%6e4/1e3));
+}
+tick();setInterval(tick,1000);
+// SISTEMA DE PASES — agrega invitados aquí cuando tengas la lista:
+// "1": { nombre: "Fam Pérez López", pases: 4 },   → enlace: invitacion.html?id=1
+const dbInvitados = {
+};
+const q=new URLSearchParams(location.search);
+const id=q.get('id');
+let pases=10, nombre=null;
+if(id && dbInvitados[id]){pases=dbInvitados[id].pases;nombre=dbInvitados[id].nombre}
+else if(q.get('p')&&!isNaN(q.get('p'))){pases=parseInt(q.get('p'));nombre=q.get('n')}
+if(nombre){
+  $('rn').value=nombre;$('rn').disabled=true;
+  $('t-name').textContent=nombre;$('t-count').textContent=pases;$('pases').style.display='block';
+}
+$('rs').addEventListener('change',e=>{
+  const g=$('rg');
+  if(e.target.value==='yes'){
+    g.style.display='block';g.innerHTML='<option value="" disabled selected>¿Cuántas personas asisten?</option>';
+    for(let i=1;i<=pases;i++)g.innerHTML+=`<option value="${i}">${i} persona${i>1?'s':''}</option>`;
+  }else{g.style.display='none';g.value=''}
+});
+function sendRSVP(){
+  const n=$('rn').value.trim(),s=$('rs').value,g=$('rg').value;
+  if(!n||!s){alert("Por favor, escribe tu nombre y selecciona una opción de asistencia.");return}
+  if(s==='yes'&&!g){alert("Por favor, indica cuántas personas asistirán.");return}
+  const m=s==='yes'?`¡Hola! Soy ${n}. Sí, confirmo con gusto mi asistencia a los XV años de Anna Pau. Seremos ${g} persona(s) en total.`
+    :`¡Hola! Soy ${n}. Lamentablemente no me será posible asistir a los XV años de Anna Pau. Agradezco mucho la invitación.`;
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(m)}`,'_blank');
+}
+function sendWish(){
+  const n=$('wn').value.trim(),w=$('wm').value.trim();
+  if(!n||!w){alert("Por favor, ingresa tu nombre y tu mensaje.");return}
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(`Hola Anna Pau, soy ${n}. Te envío este mensaje con mucho cariño:\n\n"${w}"`)}`,'_blank');
+}
+</script>
+</body>
+</html>
