@@ -6,29 +6,38 @@
 <title>Mis XV Años - Anna Pau</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Pinyon+Script&family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--white:#FFFFFF;--pearl:#F6F6F7;--silver:#C0C0C8;--silver-d:#8E8E98;--black:#0E0E10;--text:#1C1C1E;--muted:#6B6B72;--smooth:cubic-bezier(.25,1,.5,1);
---shine:linear-gradient(110deg,#8E8E98 0%,#F4F4F7 25%,#B9B9C2 45%,#FFFFFF 60%,#8E8E98 100%)}
+:root{
+  --white:#FFFFFF;
+  --pearl:#F6F6F7;
+  --silver:#C0C0C8;
+  --silver-d:#4A4A52; /* Oscurecido para más detalles negros */
+  --black:#0E0E10;
+  --text:#1C1C1E;
+  --muted:#2A2A30; /* Textos secundarios más oscuros */
+  --smooth:cubic-bezier(.25,1,.5,1);
+  --shine:linear-gradient(110deg,#8E8E98 0%,#F4F4F7 25%,#B9B9C2 45%,#FFFFFF 60%,#8E8E98 100%);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;font-family:'Montserrat',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;scroll-behavior:smooth}
 .shine{background:var(--shine);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;display:inline-block;padding:.15em .25em}
 @keyframes shimmer{to{background-position:-250% 0}}
-.music{position:fixed;bottom:28px;right:28px;width:50px;height:50px;border-radius:50%;border:1px solid var(--silver);background:var(--black);display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:2000;box-shadow:0 10px 25px rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:all .6s var(--smooth)}
+.music{position:fixed;bottom:28px;right:28px;width:50px;height:50px;border-radius:50%;border:1px solid var(--black);background:var(--black);display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:2000;box-shadow:0 10px 25px rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:all .6s var(--smooth)}
 body.active .music{opacity:1;visibility:visible}
 .music svg{width:18px;height:18px;fill:var(--silver)}
-#env{position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,#2a2a2e,#0a0a0b 75%);z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s,visibility 1.2s;overflow:hidden}
+#env{position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,#1a1a1c,#050506 75%);z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s,visibility 1.2s;overflow:hidden}
 #env.out{opacity:0;visibility:hidden;pointer-events:none}
 .env-tag{font-family:'Cinzel',serif;font-size:14px;letter-spacing:8px;text-transform:uppercase;color:var(--silver);text-align:center}
 .env-title{font-family:'Pinyon Script',cursive;font-size:76px;line-height:1.3;text-align:center;margin-bottom:35px;max-width:100%;animation:fl 4s ease-in-out infinite}
 @keyframes fl{50%{transform:translateY(-5px)}}
 .ew{position:relative;cursor:pointer;transition:transform .6s var(--smooth)}
 .ew:hover{transform:translateY(-8px)}
-.envelope{position:relative;width:320px;height:210px;background:linear-gradient(135deg,#f2f2f4,#cfcfd6);box-shadow:0 20px 45px rgba(0,0,0,.6);border-radius:2px}
-.envelope:before,.envelope:after{content:'';position:absolute;top:0;z-index:2;border-top:105px solid transparent;border-bottom:105px solid #dcdce2}
-.envelope:before{right:0;border-right:160px solid #dcdce2}
-.envelope:after{left:0;border-left:160px solid #e8e8ec}
-.flap{position:absolute;top:0;left:0;border-left:160px solid transparent;border-right:160px solid transparent;border-top:115px solid #b8b8c1;transform-origin:top;transition:transform .9s var(--smooth);z-index:4}
+.envelope{position:relative;width:320px;height:210px;background:linear-gradient(135deg,#e2e2e6,#b0b0b8);box-shadow:0 20px 45px rgba(0,0,0,.8);border-radius:2px}
+.envelope:before,.envelope:after{content:'';position:absolute;top:0;z-index:2;border-top:105px solid transparent;border-bottom:105px solid #c2c2c8}
+.envelope:before{right:0;border-right:160px solid #c2c2c8}
+.envelope:after{left:0;border-left:160px solid #d0d0d6}
+.flap{position:absolute;top:0;left:0;border-left:160px solid transparent;border-right:160px solid transparent;border-top:115px solid #9a9aa3;transform-origin:top;transition:transform .9s var(--smooth);z-index:4}
 .ew.open .flap{transform:rotateX(180deg);z-index:1}
-.seal{position:absolute;top:90px;left:50%;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#8E8E98);z-index:5;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 15px rgba(255,255,255,.35);transition:all .5s}
+.seal{position:absolute;top:90px;left:50%;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#333);z-index:5;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 15px rgba(0,0,0,.5);transition:all .5s}
 .seal svg{width:22px;height:22px;fill:var(--black)}
 .ew.open .seal{opacity:0;transform:translateX(-50%) scale(.5)}
 .hint{font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--silver);margin-top:40px;animation:pu 2.5s infinite}
@@ -43,64 +52,81 @@ body.active #main{display:flex}
 .sec{width:100%;padding:110px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
 .pearl{background:var(--pearl)}.white{background:var(--white)}
 .silver{background:linear-gradient(160deg,#e9e9ed,#c9c9d0 50%,#ececf0)}
-.black{background:radial-gradient(circle at 50% 0%,#26262a,var(--black) 70%);color:#fff}
-.tag{font-family:'Cinzel',serif;font-size:14px;letter-spacing:5px;text-transform:uppercase;color:var(--silver-d);margin-bottom:25px;font-weight:500}
+.black{background:radial-gradient(circle at 50% 0%,#1a1a1d,var(--black) 80%);color:#fff}
+.tag{font-family:'Cinzel',serif;font-size:15px;letter-spacing:5px;text-transform:uppercase;color:var(--black);margin-bottom:25px;font-weight:600}
 .black .tag{color:var(--silver)}
 .script{font-family:'Pinyon Script',cursive;font-size:84px;margin-bottom:20px;line-height:1.3}
 .serif{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.7;color:var(--muted);font-style:italic;max-width:620px;padding:0 10px}
 .black .serif{color:#c9c9d0}
-.vline{width:1px;height:60px;background:var(--silver-d);margin:35px auto}
-.hline{width:60px;height:1px;background:var(--silver-d);margin:40px auto}
-.photo{width:100%;max-width:420px;margin:50px auto 0;box-shadow:0 20px 50px rgba(0,0,0,.15);border:5px solid #fff;overflow:hidden}
-.black .photo{border-color:#2a2a2e}
+.vline{width:1px;height:60px;background:var(--black);opacity:0.4;margin:35px auto}
+.hline{width:60px;height:1px;background:var(--black);opacity:0.4;margin:40px auto}
+.photo{width:100%;max-width:420px;margin:50px auto 0;box-shadow:0 20px 50px rgba(0,0,0,.25);border:2px solid var(--black);padding:6px;background:#fff;overflow:hidden;position:relative;z-index:2}
+.black .photo{border-color:#fff;background:var(--black);}
 .photo img{width:100%;display:block;transition:transform .6s}
 .photo:hover img{transform:scale(1.03)}
-.ititle{font-family:'Cinzel',serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--silver-d);margin-bottom:12px;font-weight:500}
+.ititle{font-family:'Cinzel',serif;font-size:15px;letter-spacing:4px;text-transform:uppercase;color:var(--black);margin-bottom:12px;font-weight:600}
 .black .ititle{color:var(--silver)}
 .idata{font-family:'Cormorant Garamond',serif;font-size:32px;margin-bottom:5px;line-height:1.3}
-.btn{display:inline-block;background:var(--black);color:#fff;padding:17px 35px;font:500 12px 'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:1px solid var(--silver-d);cursor:pointer;border-radius:2px;transition:all .4s;margin-top:30px;position:relative;z-index:5}
-.btn:hover{background:var(--silver);color:var(--black);transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,255,255,.4)}
-.black .btn{background:transparent}
+.btn{display:inline-block;background:var(--black);color:#fff;padding:17px 35px;font:500 12px 'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:1px solid var(--black);cursor:pointer;border-radius:2px;transition:all .4s;margin-top:30px;position:relative;z-index:5}
+.btn:hover{background:#fff;color:var(--black);transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,.2)}
+.black .btn{background:transparent;border-color:#fff}
+.black .btn:hover{background:#fff;color:var(--black)}
 .cd{display:flex;gap:14px;margin:35px 0 10px;justify-content:center;flex-wrap:wrap}
-.cd div{width:76px;padding:16px 0;background:var(--black);border:1px solid var(--silver-d);border-radius:2px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.cd div{width:76px;padding:16px 0;background:var(--black);border:1px solid var(--silver-d);border-radius:2px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .cd b{display:block;font:500 30px 'Cinzel',serif;background:var(--shine);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
 .cd span{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)}
-.cal{width:100%;max-width:340px;margin:40px auto 0;padding:35px 25px;background:#fff;box-shadow:0 15px 45px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.05)}
-.cal h4{font:500 20px 'Cinzel',serif;text-transform:uppercase;letter-spacing:4px;margin-bottom:25px}
+.cal{width:100%;max-width:340px;margin:40px auto 0;padding:35px 25px;background:#fff;box-shadow:0 15px 45px rgba(0,0,0,.15);border:2px solid var(--black)}
+.cal h4{font:600 20px 'Cinzel',serif;text-transform:uppercase;letter-spacing:4px;margin-bottom:25px;color:var(--black)}
 .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.ch{font-size:12px;font-weight:500;color:var(--silver-d);padding-bottom:10px}
-.cdy{font:400 20px 'Cormorant Garamond',serif;color:var(--muted);display:flex;justify-content:center;align-items:center;aspect-ratio:1}
-.cdy.on{background:var(--black);color:#fff;border-radius:50%;box-shadow:0 0 14px rgba(120,120,135,.7)}
-.map{width:100%;max-width:550px;height:320px;margin:30px auto 0;box-shadow:0 15px 40px rgba(0,0,0,.12);position:relative;z-index:2}
-.map iframe{width:100%;height:100%;border:0;filter:grayscale(100%) contrast(1.05)}
+.ch{font-size:12px;font-weight:600;color:var(--black);padding-bottom:10px}
+.cdy{font:500 20px 'Cormorant Garamond',serif;color:var(--muted);display:flex;justify-content:center;align-items:center;aspect-ratio:1}
+.cdy.on{background:var(--black);color:#fff;border-radius:50%;box-shadow:0 0 14px rgba(0,0,0,.5)}
+.map{width:100%;max-width:550px;height:320px;margin:30px auto 0;box-shadow:0 15px 40px rgba(0,0,0,.2);position:relative;z-index:2;border:2px solid var(--black);padding:4px;background:#fff;}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(100%) contrast(1.1)}
 #tl{max-width:420px;width:100%;margin:35px auto 0;position:relative;z-index:2;text-align:left}
 .ev{display:flex;align-items:center;gap:20px;padding-bottom:26px;position:relative}
-.ev:not(:last-child):after{content:'';position:absolute;left:27px;top:56px;bottom:2px;width:1px;background:var(--silver)}
-.ev i{flex:none;width:56px;height:56px;border-radius:50%;background:var(--black);border:1px solid var(--silver-d);display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.ev svg{width:24px;height:24px;fill:none;stroke:#E6E6EC;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ev:not(:last-child):after{content:'';position:absolute;left:27px;top:56px;bottom:2px;width:2px;background:var(--black);opacity:0.2;}
+.ev i{flex:none;width:56px;height:56px;border-radius:50%;background:var(--black);border:1px solid var(--black);display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.ev svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .ev b{font:600 18px 'Cinzel',serif;display:block;color:var(--black)}
-.ev span{font:400 22px 'Cormorant Garamond',serif;color:var(--muted)}
+.ev span{font:500 22px 'Cormorant Garamond',serif;color:var(--muted)}
 .fg{width:100%;max-width:400px;margin:0 auto 20px;position:relative;z-index:2}
-.inp{width:100%;padding:18px 0;background:transparent;border:0;border-bottom:1px solid rgba(0,0,0,.2);font:400 15px 'Montserrat',sans-serif;color:var(--text);outline:0;text-align:center;transition:border-color .4s}
-.inp:focus{border-bottom-color:var(--black)}
+.inp{width:100%;padding:18px 0;background:transparent;border:0;border-bottom:1px solid rgba(0,0,0,.4);font:500 15px 'Montserrat',sans-serif;color:var(--text);outline:0;text-align:center;transition:border-color .4s}
+.inp:focus{border-bottom-color:var(--black);border-width:2px}
 textarea.inp{resize:vertical;min-height:90px}
 select.inp{appearance:none;text-align-last:center;cursor:pointer}
-.box{background:rgba(255,255,255,.75);padding:25px 20px;border:1px solid rgba(0,0,0,.12);max-width:420px;position:relative;z-index:2;margin-bottom:40px}
-.ticket{width:100%;max-width:380px;margin:30px auto;background:var(--black);color:#fff;padding:45px 25px;border:1px solid var(--silver-d);box-shadow:0 15px 40px rgba(0,0,0,.25);position:relative;z-index:2}
+.box{background:rgba(255,255,255,.9);padding:25px 20px;border:2px solid var(--black);max-width:420px;position:relative;z-index:2;margin-bottom:40px}
+.ticket{width:100%;max-width:380px;margin:30px auto;background:var(--black);color:#fff;padding:45px 25px;border:2px solid #333;box-shadow:0 15px 40px rgba(0,0,0,.4);position:relative;z-index:2}
 .ticket .n{font:italic 500 28px 'Cormorant Garamond',serif;color:var(--silver);margin-bottom:15px}
 .ticket .c{font:500 60px 'Cinzel',serif;line-height:1}
 
-.hero{min-height:100vh;padding:70px 20px;background:radial-gradient(ellipse at 50% 25%,#3a3a40 0%,#161618 45%,#050506 100%);color:#fff;justify-content:center}
-.hero:before{content:'';position:absolute;inset:16px;border:1px solid rgba(192,192,200,.45);pointer-events:none;z-index:1}
-.hero:after{content:'';position:absolute;inset:24px;border:1px solid rgba(192,192,200,.18);pointer-events:none;z-index:1}
+.hero{min-height:100vh;padding:70px 20px;background:radial-gradient(ellipse at 50% 25%,#2a2a2e 0%,#0e0e10 55%,#000000 100%);color:#fff;justify-content:center}
+.hero:before{content:'';position:absolute;inset:16px;border:1px solid rgba(255,255,255,.2);pointer-events:none;z-index:1}
+.hero:after{content:'';position:absolute;inset:24px;border:1px solid rgba(255,255,255,.08);pointer-events:none;z-index:1}
 .hero-tag{display:flex;align-items:center;gap:18px;font:500 13px 'Cinzel',serif;letter-spacing:8px;text-transform:uppercase;color:var(--silver);margin-bottom:10px}
 .hero-tag:before,.hero-tag:after{content:'';width:40px;height:1px;background:var(--silver-d)}
-.hero-name{font-family:'Pinyon Script',cursive;font-size:clamp(78px,24vw,150px);line-height:1.25;filter:drop-shadow(0 0 22px rgba(220,220,235,.35))}
+.hero-name{font-family:'Pinyon Script',cursive;font-size:clamp(78px,24vw,150px);line-height:1.25;filter:drop-shadow(0 0 25px rgba(255,255,255,.2))}
 .hero-date{font:500 15px 'Cinzel',serif;letter-spacing:10px;color:#fff;margin:6px 0 40px;padding-left:10px}
-.arch{width:100%;max-width:300px;aspect-ratio:3/4;border-radius:150px 150px 4px 4px;overflow:hidden;border:2px solid var(--silver);box-shadow:0 0 0 8px rgba(255,255,255,.06),0 0 60px rgba(200,200,215,.28),0 30px 60px rgba(0,0,0,.6);position:relative;z-index:2;background:linear-gradient(160deg,#2c2c31,#0c0c0e)}
+.arch{width:100%;max-width:300px;aspect-ratio:3/4;border-radius:150px 150px 4px 4px;overflow:hidden;border:2px solid #fff;box-shadow:0 0 0 6px var(--black),0 0 40px rgba(0,0,0,.8);position:relative;z-index:2;background:linear-gradient(160deg,#2c2c31,#0c0c0e)}
 .arch img{width:100%;height:100%;object-fit:cover;display:block}
 .scroll{margin-top:40px;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--silver);position:relative;z-index:2}
 .scroll:after{content:'';display:block;width:1px;height:40px;background:linear-gradient(var(--silver),transparent);margin:12px auto 0;animation:pu 2.5s infinite}
+
+/* Animación de destellos negros (Sparkles) */
+.sparkle {
+  position: absolute;
+  color: var(--black);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  animation: twinkle 4s ease-in-out infinite;
+  text-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+  50% { opacity: 0.55; transform: scale(1.1) rotate(45deg); }
+}
+
 @media(max-width:400px){.env-title{font-size:60px}.script{font-size:64px}.sec{padding:80px 15px}.idata{font-size:28px}.map{height:260px}.envelope{width:300px;height:195px}.envelope:before,.envelope:after{border-top-width:97px;border-bottom-width:97px}.envelope:before{border-right-width:150px}.envelope:after{border-left-width:150px}.flap{border-left-width:150px;border-right-width:150px;border-top-width:105px}.cd div{width:66px}}
 </style>
 </head>
@@ -134,19 +160,19 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 
 <section class="sec white">
 <div class="a up d1 tag">Bienvenidos</div>
-<p class="a up d2 serif"><b style="font-weight:500;color:var(--text)">¡Bienvenidos a mis XV años!</b><br><br>
+<p class="a up d2 serif"><b style="font-weight:600;color:var(--text)">¡Bienvenidos a mis XV años!</b><br><br>
 Hoy comienza uno de los capítulos más hermosos de mi vida… Un sueño que florece, una ilusión que se hace realidad y una noche que quedará guardada para siempre en mi corazón.<br><br>
 Con mucha ilusión, quiero compartir contigo la magia de este día tan especial, porque los momentos más bonitos de la vida se vuelven aún más inolvidables cuando los compartimos con las personas que queremos.<br><br>
 Gracias por ser parte de mi historia y acompañarme a celebrar mis XV.<br><br>
 Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que nos harán sonreír por siempre.<br><br>
-<b style="font-weight:500;color:var(--text)">¡La magia comienza aquí… y me encantaría vivirla contigo!</b></p>
+<b style="font-weight:600;color:var(--text)">¡La magia comienza aquí… y me encantaría vivirla contigo!</b></p>
 </section>
 
 <section class="sec silver">
-<div class="a up d1 ititle" style="color:var(--black)">Será un honor contar con tu presencia el</div>
-<div class="a up d2 idata" style="font-size:40px;font-weight:500">27 de Noviembre</div>
+<div class="a up d1 ititle">Será un honor contar con tu presencia el</div>
+<div class="a up d2 idata" style="font-size:40px;font-weight:600">27 de Noviembre</div>
 <div class="a up d3 idata shine" style="font-size:26px;letter-spacing:3px;font-family:'Cinzel',serif">2026</div>
-<div class="a up d3 ititle" style="margin-top:35px;color:var(--black)">Faltan</div>
+<div class="a up d3 ititle" style="margin-top:35px;">Faltan</div>
 <div class="a zm d4 cd">
 <div><b id="cd-d">00</b><span>Días</span></div><div><b id="cd-h">00</b><span>Horas</span></div><div><b id="cd-m">00</b><span>Min</span></div><div><b id="cd-s">00</b><span>Seg</span></div>
 </div>
@@ -158,12 +184,21 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <section class="sec white">
 <div class="a up d1 ititle">Con el amor de mis padres</div>
 <div class="a up d2 idata">Adriana Tello</div>
-<div class="a up d3" style="font:20px 'Cinzel',serif;color:var(--silver-d);margin:12px 0">&</div>
+<div class="a up d3" style="font:22px 'Cinzel',serif;color:var(--black);margin:12px 0">&</div>
 <div class="a up d3 idata">Roberto López</div>
 <div class="a zm d4 hline"></div>
+
 <div class="a up d4 ititle">Y mis Padrinos</div>
 <div class="a up d4 idata" style="font-size:28px">Susana Díaz y Eduardo Mafra</div>
-<div class="a up d4 photo"><img src="assets/foto3.jpg" alt="Familia" onerror="this.parentNode.style.display='none'"></div>
+<div class="a zm d4 hline"></div>
+
+<div class="a up d4 ititle">A mi familia</div>
+<div class="a up d4 idata" style="font-size:26px">Georgina Vargas</div>
+<div class="a up d4 idata" style="font-size:26px">Rossina Vargas</div>
+<div class="a up d4 idata" style="font-size:26px">Ginna Tello</div>
+<div class="a up d4 idata" style="font-size:26px">César López</div>
+
+<div class="a up d4 photo" style="margin-top: 50px;"><img src="assets/foto3.jpg" alt="Familia" onerror="this.parentNode.style.display='none'"></div>
 </section>
 
 <section class="sec pearl">
@@ -189,25 +224,25 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 
 <section class="sec black">
 <div class="a up d1 ititle">Código de Vestimenta</div>
-<div class="a up d2 idata shine" style="font:500 40px 'Cinzel',serif;margin:25px 0;letter-spacing:5px">BLACK<br>AND WHITE</div>
-<div class="a up d3 vline" style="background:#444;height:40px"></div>
+<div class="a up d2 idata shine" style="font:600 40px 'Cinzel',serif;margin:25px 0;letter-spacing:5px">BLACK<br>AND WHITE</div>
+<div class="a up d3 vline" style="background:#555;height:40px;opacity:1"></div>
 <p class="a up d4 serif" style="font-size:19px">Formal. Para mantener la elegancia de la noche, te pedimos asistir vistiendo en tonos blanco y negro.</p>
 <div class="a up d4 photo"><img src="assets/foto5.jpg" alt="Dress Code" onerror="this.parentNode.style.display='none'"></div>
 </section>
 
 <section class="sec pearl">
 <div class="a up d1 ititle">Mesa de Regalos</div>
-<svg class="a zm d2" viewBox="0 0 24 24" style="width:45px;height:45px;fill:var(--silver-d);margin:20px 0"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+<svg class="a zm d2" viewBox="0 0 24 24" style="width:45px;height:45px;fill:var(--black);margin:20px 0"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
 <div class="a up d3 idata" style="font-size:34px">Lluvia de Sobres</div>
 <p class="a up d4 serif" style="margin-top:20px;font-size:20px">El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional, habrá un buzón en la recepción para tu obsequio.</p>
 </section>
 
 <section class="sec silver">
-<div class="a up d1 ititle" style="color:var(--black)">Música</div>
+<div class="a up d1 ititle">Música</div>
 <div class="a up d2 idata" style="font-size:34px">Nuestra Playlist</div>
 <p class="a up d3 serif" style="margin:20px auto 40px;font-size:20px">Ayúdame a crear el ambiente perfecto agregando tus canciones favoritas para la pista de baile.</p>
 <div class="a zm d4" style="width:100%;max-width:480px;position:relative;z-index:2">
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2umHmObbw3Vwjx2eZZ4vdB?utm_source=generator&si=855b78eddc574cd7" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe data-testid="embed-iframe" style="border-radius:12px; border:2px solid var(--black)" src="https://open.spotify.com/embed/playlist/2umHmObbw3Vwjx2eZZ4vdB?utm_source=generator&si=855b78eddc574cd7" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 <a class="a up d4 btn" target="_blank" href="https://open.spotify.com/playlist/2umHmObbw3Vwjx2eZZ4vdB?si=582d71b8e3ef4a76&pt=078a25e2da28d9689fcf7515a0cf991d">Agregar Canciones</a>
 </section>
@@ -216,7 +251,7 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <div class="a up d1 ititle">Momentos</div>
 <div class="a up d2 idata" style="font-size:34px">Galería en Vivo</div>
 <p class="a up d3 serif" style="margin:25px auto;font-size:20px">Captura la magia de esta noche. Comparte todas las fotos y videos que tomes directamente en nuestro álbum digital.<br><br>
-<span style="font:500 14px 'Montserrat',sans-serif;font-style:normal;color:var(--muted)">Te sugerimos tener instalada la app de <strong>Google Drive</strong> para subir tus archivos fácilmente.</span></p>
+<span style="font:500 14px 'Montserrat',sans-serif;font-style:normal;color:var(--black)">Te sugerimos tener instalada la app de <strong>Google Drive</strong> para subir tus archivos fácilmente.</span></p>
 <a class="a up d4 btn" target="_blank" href="https://drive.google.com/drive/folders/1-3BAJ12anPFqcOKy97ZwoZ2p79st-ZCw?usp=sharing">Subir mis Fotos</a>
 <div class="a up d4 photo"><img src="assets/foto6.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
 </section>
@@ -225,9 +260,9 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <div id="pases" style="display:none;width:100%">
 <div class="a up d1 ititle">Acceso al Evento</div>
 <div class="a zm d2 ticket">
-<div class="tag" style="margin-bottom:20px">Boleto Especial</div>
+<div class="tag" style="margin-bottom:20px; color: #fff;">Boleto Especial</div>
 <div class="n" id="t-name">Invitado Especial</div>
-<div class="serif" style="font-size:19px;margin:0 auto 15px">Pases Asignados</div>
+<div class="serif" style="font-size:19px;margin:0 auto 15px; color:#ccc;">Pases Asignados</div>
 <div class="c shine" id="t-count">0</div>
 <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-top:30px">Muestra esta pantalla al llegar</div>
 </div>
@@ -294,6 +329,27 @@ function tick(){
   $('cd-s').textContent=p(Math.floor(t%6e4/1e3));
 }
 tick();setInterval(tick,1000);
+
+// Generador de destellos y brillos en negro para el fondo
+function createSparkles(){
+  const sections = document.querySelectorAll('.sec:not(.black):not(.hero)');
+  sections.forEach(sec => {
+    const numSparkles = 12; // Cantidad de destellos por sección
+    for(let i=0; i<numSparkles; i++){
+      let sp = document.createElement('div');
+      sp.className = 'sparkle';
+      sp.innerHTML = '✦'; 
+      sp.style.left = Math.random() * 100 + '%';
+      sp.style.top = Math.random() * 100 + '%';
+      sp.style.animationDelay = (Math.random() * 4) + 's';
+      let size = Math.random() * 15 + 10;
+      sp.style.fontSize = size + 'px';
+      sec.appendChild(sp);
+    }
+  });
+}
+document.addEventListener("DOMContentLoaded", createSparkles);
+
 // SISTEMA DE PASES — agrega invitados aquí cuando tengas la lista:
 // "1": { nombre: "Fam Pérez López", pases: 4 },   → enlace: invitacion.html?id=1
 const dbInvitados = {
@@ -324,7 +380,7 @@ function sendRSVP(){
 }
 function sendWish(){
   const n=$('wn').value.trim(),w=$('wm').value.trim();
-  if(!n||!w){alert("Por favor, ingresa tu nombre y tu mensaje.");return}
+  if(!n||w===""){alert("Por favor, ingresa tu nombre y tu mensaje.");return}
   window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(`Hola Anna Pau, soy ${n}. Te envío este mensaje con mucho cariño:\n\n"${w}"`)}`,'_blank');
 }
 </script>
