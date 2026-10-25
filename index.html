@@ -10,10 +10,10 @@
   --white:#FFFFFF;
   --pearl:#F6F6F7;
   --silver:#C0C0C8;
-  --silver-d:#4A4A52; /* Oscurecido para más detalles negros */
+  --silver-d:#4A4A52;
   --black:#0E0E10;
   --text:#1C1C1E;
-  --muted:#2A2A30; /* Textos secundarios más oscuros */
+  --muted:#2A2A30;
   --smooth:cubic-bezier(.25,1,.5,1);
   --shine:linear-gradient(110deg,#8E8E98 0%,#F4F4F7 25%,#B9B9C2 45%,#FFFFFF 60%,#8E8E98 100%);
 }
@@ -60,6 +60,7 @@ body.active #main{display:flex}
 .black .serif{color:#c9c9d0}
 .vline{width:1px;height:60px;background:var(--black);opacity:0.4;margin:35px auto}
 .hline{width:60px;height:1px;background:var(--black);opacity:0.4;margin:40px auto}
+.black .vline, .black .hline{background:rgba(255,255,255,0.2)}
 .photo{width:100%;max-width:420px;margin:50px auto 0;box-shadow:0 20px 50px rgba(0,0,0,.25);border:2px solid var(--black);padding:6px;background:#fff;overflow:hidden;position:relative;z-index:2}
 .black .photo{border-color:#fff;background:var(--black);}
 .photo img{width:100%;display:block;transition:transform .6s}
@@ -73,15 +74,22 @@ body.active #main{display:flex}
 .black .btn:hover{background:#fff;color:var(--black)}
 .cd{display:flex;gap:14px;margin:35px 0 10px;justify-content:center;flex-wrap:wrap}
 .cd div{width:76px;padding:16px 0;background:var(--black);border:1px solid var(--silver-d);border-radius:2px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.black .cd div{background:transparent; border-color:rgba(255,255,255,0.3)}
 .cd b{display:block;font:500 30px 'Cinzel',serif;background:var(--shine);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
 .cd span{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)}
 .cal{width:100%;max-width:340px;margin:40px auto 0;padding:35px 25px;background:#fff;box-shadow:0 15px 45px rgba(0,0,0,.15);border:2px solid var(--black)}
 .cal h4{font:600 20px 'Cinzel',serif;text-transform:uppercase;letter-spacing:4px;margin-bottom:25px;color:var(--black)}
+.black .cal{background:var(--black); border-color:#fff}
+.black .cal h4{color:#fff}
 .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
 .ch{font-size:12px;font-weight:600;color:var(--black);padding-bottom:10px}
+.black .ch{color:#ccc}
 .cdy{font:500 20px 'Cormorant Garamond',serif;color:var(--muted);display:flex;justify-content:center;align-items:center;aspect-ratio:1}
+.black .cdy{color:#888}
 .cdy.on{background:var(--black);color:#fff;border-radius:50%;box-shadow:0 0 14px rgba(0,0,0,.5)}
+.black .cdy.on{background:#fff;color:var(--black);box-shadow:0 0 14px rgba(255,255,255,.4)}
 .map{width:100%;max-width:550px;height:320px;margin:30px auto 0;box-shadow:0 15px 40px rgba(0,0,0,.2);position:relative;z-index:2;border:2px solid var(--black);padding:4px;background:#fff;}
+.black .map{border-color:#fff; background:var(--black)}
 .map iframe{width:100%;height:100%;border:0;filter:grayscale(100%) contrast(1.1)}
 #tl{max-width:420px;width:100%;margin:35px auto 0;position:relative;z-index:2;text-align:left}
 .ev{display:flex;align-items:center;gap:20px;padding-bottom:26px;position:relative}
@@ -168,7 +176,8 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <b style="font-weight:600;color:var(--text)">¡La magia comienza aquí… y me encantaría vivirla contigo!</b></p>
 </section>
 
-<section class="sec silver">
+<!-- SECCIÓN OSCURA: Cuenta Regresiva -->
+<section class="sec black">
 <div class="a up d1 ititle">Será un honor contar con tu presencia el</div>
 <div class="a up d2 idata" style="font-size:40px;font-weight:600">27 de Noviembre</div>
 <div class="a up d3 idata shine" style="font-size:26px;letter-spacing:3px;font-family:'Cinzel',serif">2026</div>
@@ -237,12 +246,13 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <p class="a up d4 serif" style="margin-top:20px;font-size:20px">El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional, habrá un buzón en la recepción para tu obsequio.</p>
 </section>
 
-<section class="sec silver">
+<!-- SECCIÓN OSCURA: Música -->
+<section class="sec black">
 <div class="a up d1 ititle">Música</div>
 <div class="a up d2 idata" style="font-size:34px">Nuestra Playlist</div>
 <p class="a up d3 serif" style="margin:20px auto 40px;font-size:20px">Ayúdame a crear el ambiente perfecto agregando tus canciones favoritas para la pista de baile.</p>
 <div class="a zm d4" style="width:100%;max-width:480px;position:relative;z-index:2">
-<iframe data-testid="embed-iframe" style="border-radius:12px; border:2px solid var(--black)" src="https://open.spotify.com/embed/playlist/2umHmObbw3Vwjx2eZZ4vdB?utm_source=generator&si=855b78eddc574cd7" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe data-testid="embed-iframe" style="border-radius:12px; border:2px solid #fff" src="https://open.spotify.com/embed/playlist/2umHmObbw3Vwjx2eZZ4vdB?utm_source=generator&si=855b78eddc574cd7" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 <a class="a up d4 btn" target="_blank" href="https://open.spotify.com/playlist/2umHmObbw3Vwjx2eZZ4vdB?si=582d71b8e3ef4a76&pt=078a25e2da28d9689fcf7515a0cf991d">Agregar Canciones</a>
 </section>
