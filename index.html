@@ -61,10 +61,28 @@ body.active #main{display:flex}
 .vline{width:1px;height:60px;background:var(--black);opacity:0.4;margin:35px auto}
 .hline{width:60px;height:1px;background:var(--black);opacity:0.4;margin:40px auto}
 .black .vline, .black .hline{background:rgba(255,255,255,0.2)}
-.photo{width:100%;max-width:420px;margin:50px auto 0;box-shadow:0 20px 50px rgba(0,0,0,.25);border:2px solid var(--black);padding:6px;background:#fff;overflow:hidden;position:relative;z-index:2}
+
+/* ===== FOTOS (se muestran completas, se pueden abrir) ===== */
+.photo{width:100%;max-width:420px;margin:50px auto 0;box-shadow:0 20px 50px rgba(0,0,0,.25);border:2px solid var(--black);padding:6px;background:#fff;overflow:hidden;position:relative;z-index:2;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
 .black .photo{border-color:#fff;background:var(--black);}
-.photo img{width:100%;display:block;transition:transform .6s}
-.photo:hover img{transform:scale(1.03)}
+.pbox{position:relative;margin:0 auto;overflow:hidden;line-height:0;max-width:100%}
+.pbox img{display:block;max-width:none;user-select:none;-webkit-user-drag:none}
+.pbox img.rot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg)}
+.photo:after{content:'';position:absolute;right:12px;bottom:12px;width:30px;height:30px;border-radius:50%;background:rgba(14,14,16,.7) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'><circle cx='10' cy='10' r='6'/><path d='M15 15l5 5M10 7v6M7 10h6'/></svg>") center/16px no-repeat;pointer-events:none;z-index:3}
+
+/* Visor / lightbox */
+#lb{position:fixed;inset:0;z-index:3000;background:rgba(5,5,6,.95);display:flex;justify-content:center;align-items:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+#lb.on{opacity:1;visibility:visible}
+#lbbox{position:relative;overflow:hidden;line-height:0;border:2px solid #fff;box-shadow:0 0 50px rgba(0,0,0,.8);background:#000}
+#lbbox img{display:block;max-width:none}
+#lbbox img.rot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg)}
+.lbb{position:absolute;z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(14,14,16,.7);color:#fff;font:300 26px/1 'Montserrat',sans-serif;cursor:pointer;display:flex;justify-content:center;align-items:center;transition:background .3s}
+.lbb:hover{background:#fff;color:var(--black)}
+#lbx{top:16px;right:16px}
+#lbp{left:12px;top:50%;transform:translateY(-50%)}
+#lbn{right:12px;top:50%;transform:translateY(-50%)}
+#lbc{position:absolute;bottom:18px;left:0;right:0;text-align:center;font:500 11px 'Cinzel',serif;letter-spacing:4px;color:var(--silver)}
+
 .ititle{font-family:'Cinzel',serif;font-size:15px;letter-spacing:4px;text-transform:uppercase;color:var(--black);margin-bottom:12px;font-weight:600}
 .black .ititle{color:var(--silver)}
 .idata{font-family:'Cormorant Garamond',serif;font-size:32px;margin-bottom:5px;line-height:1.3}
@@ -115,8 +133,8 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 .hero-tag:before,.hero-tag:after{content:'';width:40px;height:1px;background:var(--silver-d)}
 .hero-name{font-family:'Pinyon Script',cursive;font-size:clamp(78px,24vw,150px);line-height:1.25;filter:drop-shadow(0 0 25px rgba(255,255,255,.2))}
 .hero-date{font:500 15px 'Cinzel',serif;letter-spacing:10px;color:#fff;margin:6px 0 40px;padding-left:10px}
-.arch{width:100%;max-width:300px;aspect-ratio:3/4;border-radius:150px 150px 4px 4px;overflow:hidden;border:2px solid #fff;box-shadow:0 0 0 6px var(--black),0 0 40px rgba(0,0,0,.8);position:relative;z-index:2;background:linear-gradient(160deg,#2c2c31,#0c0c0e)}
-.arch img{width:100%;height:100%;object-fit:cover;display:block}
+/* Arco: sin recorte, la foto se ve completa */
+.arch{width:100%;max-width:300px;border-radius:150px 150px 4px 4px;overflow:hidden;border:2px solid #fff;box-shadow:0 0 0 6px var(--black),0 0 40px rgba(0,0,0,.8);position:relative;z-index:2;background:#0c0c0e;cursor:zoom-in}
 .scroll{margin-top:40px;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--silver);position:relative;z-index:2}
 .scroll:after{content:'';display:block;width:1px;height:40px;background:linear-gradient(var(--silver),transparent);margin:12px auto 0;animation:pu 2.5s infinite}
 
@@ -135,7 +153,7 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
   50% { opacity: 0.55; transform: scale(1.1) rotate(45deg); }
 }
 
-@media(max-width:400px){.env-title{font-size:60px}.script{font-size:64px}.sec{padding:80px 15px}.idata{font-size:28px}.map{height:260px}.envelope{width:300px;height:195px}.envelope:before,.envelope:after{border-top-width:97px;border-bottom-width:97px}.envelope:before{border-right-width:150px}.envelope:after{border-left-width:150px}.flap{border-left-width:150px;border-right-width:150px;border-top-width:105px}.cd div{width:66px}}
+@media(max-width:400px){.env-title{font-size:60px}.script{font-size:64px}.sec{padding:80px 15px}.idata{font-size:28px}.map{height:260px}.envelope{width:300px;height:195px}.envelope:before,.envelope:after{border-top-width:97px;border-bottom-width:97px}.envelope:before{border-right-width:150px}.envelope:after{border-left-width:150px}.flap{border-left-width:150px;border-right-width:150px;border-top-width:105px}.cd div{width:66px}.lbb{width:40px;height:40px}}
 </style>
 </head>
 <body>
@@ -144,6 +162,15 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <svg id="ip" style="display:none" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
 <svg id="ia" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
 </button>
+
+<!-- Visor de fotos -->
+<div id="lb" aria-hidden="true">
+  <button class="lbb" id="lbx" aria-label="Cerrar">&times;</button>
+  <button class="lbb" id="lbp" aria-label="Anterior">&#8249;</button>
+  <button class="lbb" id="lbn" aria-label="Siguiente">&#8250;</button>
+  <div id="lbbox"></div>
+  <div id="lbc"></div>
+</div>
 
 <div id="env">
 <div class="env-tag">Mis XV Años</div>
@@ -158,14 +185,16 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 
 <main id="main">
 
+<!-- HERO · foto 1 -->
 <section class="sec hero">
 <div class="a up d1 hero-tag">Mis XV Años</div>
 <h1 class="a zm d2 hero-name shine">Anna Pau</h1>
 <div class="a up d3 hero-date">27 · 11 · 2026</div>
-<div class="a zm d4 arch"><img src="assets/foto1.jpg" alt="Anna Pau" onerror="this.parentNode.style.display='none'"></div>
+<div class="a zm d4 arch" data-n="1" data-alt="Anna Pau"></div>
 <div class="a up d4 scroll">Desliza</div>
 </section>
 
+<!-- BIENVENIDOS · foto 2 -->
 <section class="sec white">
 <div class="a up d1 tag">Bienvenidos</div>
 <p class="a up d2 serif"><b style="font-weight:600;color:var(--text)">¡Bienvenidos a mis XV años!</b><br><br>
@@ -174,9 +203,10 @@ Con mucha ilusión, quiero compartir contigo la magia de este día tan especial,
 Gracias por ser parte de mi historia y acompañarme a celebrar mis XV.<br><br>
 Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que nos harán sonreír por siempre.<br><br>
 <b style="font-weight:600;color:var(--text)">¡La magia comienza aquí… y me encantaría vivirla contigo!</b></p>
+<div class="a up d3 photo" data-n="2" data-alt="Anna Pau"></div>
 </section>
 
-<!-- SECCIÓN OSCURA: Cuenta Regresiva -->
+<!-- SECCIÓN OSCURA: Cuenta Regresiva · foto 3 -->
 <section class="sec black">
 <div class="a up d1 ititle">Será un honor contar con tu presencia el</div>
 <div class="a up d2 idata" style="font-size:40px;font-weight:600">27 de Noviembre</div>
@@ -187,9 +217,10 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 </div>
 <div class="a zm d4 cal"><h4>Noviembre</h4><div class="grid" id="cal"></div></div>
 <a class="a up d4 btn" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Anna+Pau&dates=20261128T010000Z/20261128T080000Z&location=Hacienda+Tejalpa&details=%C2%A1La+magia+comienza+aqu%C3%AD!">Agendar Evento</a>
-<div class="a up d4 photo"><img src="assets/foto2.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
+<div class="a up d4 photo" data-n="3" data-alt=""></div>
 </section>
 
+<!-- PADRES · foto 4 -->
 <section class="sec white">
 <div class="a up d1 ititle">Con el amor de mis padres</div>
 <div class="a up d2 idata">Adriana Tello</div>
@@ -207,9 +238,10 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <div class="a up d4 idata" style="font-size:26px">Ginna Tello</div>
 <div class="a up d4 idata" style="font-size:26px">César López</div>
 
-<div class="a up d4 photo" style="margin-top: 50px;"><img src="assets/foto3.jpg" alt="Familia" onerror="this.parentNode.style.display='none'"></div>
+<div class="a up d4 photo" data-n="4" data-alt="Familia" style="margin-top: 50px;"></div>
 </section>
 
+<!-- CEREMONIA / RECEPCIÓN · foto 5 -->
 <section class="sec pearl">
 <div class="a up d1 ititle">Ceremonia Religiosa</div>
 <div class="a up d2 idata">Capilla Hacienda Tejalpa</div>
@@ -222,28 +254,33 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <div class="a up d3 tag" style="margin:15px 0 0">8:00 p.m.</div>
 <div class="a zm d4 map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.7030639984673!2d-99.7661735!3d19.2517686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd865640467143%3A0xbe4030fae78b4268!2sHACIENDA%20TEJALPAEx%20Hacienda%20Tejalpa!5e0!3m2!1ses-419!2smx!4v1792716324363!5m2!1ses-419!2smx" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 <a class="a up d4 btn" target="_blank" href="https://maps.app.goo.gl/xNKHKytZ9gVjbjBT9?g_st=ic">Ver Ubicación</a>
-<div class="a up d4 photo"><img src="assets/foto4.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
+<div class="a up d4 photo" data-n="5" data-alt=""></div>
 </section>
 
+<!-- ITINERARIO · foto 6 -->
 <section class="sec white">
 <div class="a up d1 ititle">Programa</div>
 <div class="a up d2 idata" style="font-size:36px">Itinerario</div>
 <div class="a up d3" id="tl"></div>
+<div class="a up d4 photo" data-n="6" data-alt=""></div>
 </section>
 
+<!-- VESTIMENTA · foto 7 -->
 <section class="sec black">
 <div class="a up d1 ititle">Código de Vestimenta</div>
 <div class="a up d2 idata shine" style="font:600 40px 'Cinzel',serif;margin:25px 0;letter-spacing:5px">BLACK<br>AND WHITE</div>
 <div class="a up d3 vline" style="background:#555;height:40px;opacity:1"></div>
 <p class="a up d4 serif" style="font-size:19px">Formal. Para mantener la elegancia de la noche, te pedimos asistir vistiendo en tonos blanco y negro.</p>
-<div class="a up d4 photo"><img src="assets/foto5.jpg" alt="Dress Code" onerror="this.parentNode.style.display='none'"></div>
+<div class="a up d4 photo" data-n="7" data-alt="Dress Code"></div>
 </section>
 
+<!-- REGALOS · foto 8 -->
 <section class="sec pearl">
 <div class="a up d1 ititle">Mesa de Regalos</div>
 <svg class="a zm d2" viewBox="0 0 24 24" style="width:45px;height:45px;fill:var(--black);margin:20px 0"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
 <div class="a up d3 idata" style="font-size:34px">Lluvia de Sobres</div>
 <p class="a up d4 serif" style="margin-top:20px;font-size:20px">El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional, habrá un buzón en la recepción para tu obsequio.</p>
+<div class="a up d4 photo" data-n="8" data-alt=""></div>
 </section>
 
 <!-- SECCIÓN OSCURA: Música -->
@@ -257,13 +294,14 @@ Prepárate para vivir una noche llena de amor, alegría, magia y recuerdos que n
 <a class="a up d4 btn" target="_blank" href="https://open.spotify.com/playlist/2umHmObbw3Vwjx2eZZ4vdB?si=582d71b8e3ef4a76&pt=078a25e2da28d9689fcf7515a0cf991d">Agregar Canciones</a>
 </section>
 
+<!-- GALERÍA · foto 9 -->
 <section class="sec white">
 <div class="a up d1 ititle">Momentos</div>
 <div class="a up d2 idata" style="font-size:34px">Galería en Vivo</div>
 <p class="a up d3 serif" style="margin:25px auto;font-size:20px">Captura la magia de esta noche. Comparte todas las fotos y videos que tomes directamente en nuestro álbum digital.<br><br>
 <span style="font:500 14px 'Montserrat',sans-serif;font-style:normal;color:var(--black)">Te sugerimos tener instalada la app de <strong>Google Drive</strong> para subir tus archivos fácilmente.</span></p>
 <a class="a up d4 btn" target="_blank" href="https://drive.google.com/drive/folders/1-3BAJ12anPFqcOKy97ZwoZ2p79st-ZCw?usp=sharing">Subir mis Fotos</a>
-<div class="a up d4 photo"><img src="assets/foto6.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
+<div class="a up d4 photo" data-n="9" data-alt=""></div>
 </section>
 
 <section class="sec pearl">
@@ -308,11 +346,98 @@ function openEnv(){
   setTimeout(()=>{
     $('env').classList.add('out');document.body.classList.add('active');
     bgm.play().then(()=>setIcon(true)).catch(()=>setIcon(false));
+    setTimeout(layoutAll,50);
   },1000);
 }
 // Animaciones al hacer scroll
 const io=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.a').forEach(e=>io.observe(e));
+
+/* =========================================================
+   FOTOS: assets/1.jpg ... assets/9.jpg
+   Las listadas en ROT están en horizontal y se giran a la izquierda.
+   Todas se muestran completas (sin recortar) y se abren en un visor.
+   ========================================================= */
+const ROT=[2,4,6,7,8,9];
+const photos=[...document.querySelectorAll('[data-n]')];
+
+// Ajusta caja + imagen para que se vea completa (con o sin giro)
+function fit(box,img,rot,maxW,maxH){
+  const nw=img.naturalWidth,nh=img.naturalHeight;
+  if(!nw||!nh)return;
+  const vw=rot?nh:nw, vh=rot?nw:nh;           // tamaño visual final
+  let s=maxW/vw; if(maxH)s=Math.min(s,maxH/vh);
+  box.style.width=(vw*s)+'px';
+  box.style.height=(vh*s)+'px';
+  img.style.width=(nw*s)+'px';
+  img.style.height=(nh*s)+'px';
+}
+function layout(el){
+  const im=el._im; if(!im||!im.naturalWidth)return;
+  const pad=el.classList.contains('arch')?4:16;
+  fit(el._box,im,el._rot,el.clientWidth-pad);
+}
+function layoutAll(){photos.forEach(layout);if($('lb').classList.contains('on'))showLb(cur)}
+
+photos.forEach((el,i)=>{
+  const n=+el.dataset.n, rot=ROT.includes(n);
+  const box=document.createElement('div');box.className='pbox';
+  const im=new Image();
+  im.alt=el.dataset.alt||'';im.draggable=false;
+  if(rot)im.className='rot';
+  im.onload=()=>layout(el);
+  im.onerror=()=>{el.style.display='none'};
+  im.src='assets/'+n+'.jpg';
+  box.appendChild(im);el.appendChild(box);
+  el._im=im;el._box=box;el._rot=rot;el._idx=i;
+  el.setAttribute('role','button');el.setAttribute('tabindex','0');
+  el.addEventListener('click',()=>openLb(i));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(i)}});
+});
+window.addEventListener('resize',layoutAll);
+window.addEventListener('load',layoutAll);
+
+// Visor
+const lb=$('lb'),lbbox=$('lbbox'),lbc=$('lbc');let cur=0;
+function visible(){return photos.filter(p=>p.style.display!=='none')}
+function showLb(i){
+  const list=visible(); if(!list.length)return;
+  cur=(i+list.length)%list.length; 
+  const el=list[cur], src=el._im;
+  lbbox.innerHTML='';
+  const im=new Image();im.alt=src.alt;im.draggable=false;
+  if(el._rot)im.className='rot';
+  im.src=src.src;
+  lbbox.appendChild(im);
+  const go=()=>fit(lbbox,im,el._rot,innerWidth*.92,innerHeight*.84);
+  if(im.complete&&im.naturalWidth)go();else im.onload=go;
+  lbc.textContent=(cur+1)+' / '+list.length;
+}
+function openLb(i){
+  const list=visible();const idx=list.indexOf(photos[i]);
+  lb.classList.add('on');lb.setAttribute('aria-hidden','false');
+  document.documentElement.style.overflow='hidden';
+  showLb(idx<0?0:idx);
+}
+function closeLb(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');document.documentElement.style.overflow=''}
+$('lbx').onclick=e=>{e.stopPropagation();closeLb()};
+$('lbp').onclick=e=>{e.stopPropagation();showLb(cur-1)};
+$('lbn').onclick=e=>{e.stopPropagation();showLb(cur+1)};
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('on'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')showLb(cur-1);
+  if(e.key==='ArrowRight')showLb(cur+1);
+});
+// Deslizar en el celular
+let tx=null;
+lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{
+  if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;tx=null;
+  if(Math.abs(dx)>50)showLb(dx<0?cur+1:cur-1);
+});
+
 // Itinerario con iconos
 const ICON={
 church:'M12 3v18M7 8h10',
